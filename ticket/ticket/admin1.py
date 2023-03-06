@@ -76,3 +76,14 @@ def ADD_STUDENT(request):
 
 
     return render(request,'admin1/add_student.html',context)
+
+
+def VIEW_STUDENT(request):
+    student=Student.objects.all()
+
+    context={
+        'student':student,
+
+
+    }
+    return render(request,'admin1/view_student.html',context)

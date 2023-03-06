@@ -22,6 +22,7 @@ urlpatterns = [
 # Admin panel
     path('admin1/home',admin1.HOME,name='admin_home'),
     path('admin1/student/add',admin1.ADD_STUDENT,name='add_student'),
+    path('admin1/student/view',admin1.VIEW_STUDENT,name='view_student'),
 
 
 #Student Panel

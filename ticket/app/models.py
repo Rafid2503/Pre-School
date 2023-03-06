@@ -21,7 +21,7 @@ class Course(models.Model):
 
 class Session_Year(models.Model):
 
-    session_start =models.CharField(max_length=100)
+    session_start=models.CharField(max_length=100)
     session_end=models.CharField(max_length=100)
 
     def __str__(self):
