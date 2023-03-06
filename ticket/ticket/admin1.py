@@ -53,7 +53,7 @@ def ADD_STUDENT(request):
                 gender=gender,
             )
             student.save()
-            messages.success(request,'Records are successfully saved')
+            messages.success(request,user.first_name + " " + user.last_name+ " is successfully Added")
             return redirect('add_student')
 
 
