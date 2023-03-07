@@ -48,6 +48,7 @@ urlpatterns = [
 
 
 
+
     path('admin1/student/edit/<str:id>',admin1.EDIT_STUDENT,name='edit_student'),
     path('admin1/student/update',admin1.UPDATE_STUDENT,name='update_student'),
 
@@ -56,6 +57,10 @@ urlpatterns = [
 
 #staff
     path('Admin1/Staff/Add',admin1.ADD_STAFF,name='add_staff'),
+    path('Admin1/Staff/View',admin1.VIEW_STAFF,name='view_staff'),
+    path('Admin1/Staff/Edit/<str:id>',admin1.EDIT_STAFF,name='edit_staff'),
+    path('Admin1/Staff/Update',admin1.UPDATE_STAFF,name='update_staff'),
+    path('Admin/Staff/Delete/<str:admin>',admin1.DELETE_STAFF,name='delete_staff')
 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
