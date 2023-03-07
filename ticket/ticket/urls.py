@@ -25,6 +25,9 @@ urlpatterns = [
     path('admin1/student/view',admin1.VIEW_STUDENT,name='view_student'),
     path('admin1/student/edit/<str:id>',admin1.EDIT_STUDENT,name='edit_student'),
     path('admin1/student/update',admin1.UPDATE_STUDENT,name='update_student'),
+    path('admin1/student/delete<str:admin>',admin1.DELETE_STUDENT,name='delete_student'),
+
+    path('admin1/course/add',admin1.ADD_COURSE,name='add_course'),
 
 #Student Panel
     path('student/home',student.HOME,name='student_home'),

@@ -149,3 +149,25 @@ def UPDATE_STUDENT(request):
 
 
     return render(request,'admin1/edit_student.html')
+
+
+def DELETE_STUDENT(request,admin):
+    student= CustomUser.objects.get(id=admin)
+    student.delete()
+    messages.success(request,'Record are successfully deleted')
+    return redirect('view_student')
+    return None
+
+
+def ADD_COURSE(request):
+
+    if request.method=="POST":
+        course_name=request.POST.get('course_name')
+
+        course=Course(
+            name=course_name,
+        )
+        course.save()
+        messages.success(request,'Course is successfully added')
+        return redirect('add_course')
+    return render(request,'admin1/add_course.html')
