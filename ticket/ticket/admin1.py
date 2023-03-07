@@ -266,3 +266,61 @@ def DELETE_COURSE(request,id):
     messages.success(request,'Course are sucessfuly deleted')
     return redirect('view_course')
 
+
+def VIEW_STAFF(request):
+    staff=Staff.objects.all()
+
+    context= {
+        'staff':staff,
+    }
+    print(staff)
+    return render(request,'admin1/view_staff.html',context)
+
+
+def EDIT_STAFF(request,id):
+    staff = Staff.objects.get(id=id)
+
+    context={
+        'staff':staff,
+    }
+    return render(request,'admin1/edit_staff.html',context)
+
+
+def UPDATE_STAFF(request):
+    if request.method == "POST":
+        staff_id=request.POST.get('staff_id')
+        profile_pic = request.FILES.get("profile_pic")
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        address = request.POST.get('address')
+        gender = request.POST.get('gender')
+
+        user = CustomUser.objects.get(id = staff_id)
+        user.username=username
+        user.first_name=first_name
+        user.last_name=last_name
+        user.email=email
+
+        if password != None and password != "":
+            user.set_password(password)
+        if profile_pic != None and profile_pic != "":
+            user.profile_pic = profile_pic
+        user.save()
+        staff = Staff.objects.get(admin=staff_id)
+        staff.gender=gender
+        staff.address=address
+        staff.save()
+        messages.success(request,'Staff Is Successfully Updated')
+        return redirect('view_staff')
+
+    return render(request,'admin1/edit_staff.html')
+
+
+def DELETE_STAFF(request,admin):
+    staff = CustomUser.objects.get(id = admin)
+    staff.delete()
+    messages.success(request,'Record Are Successfully Deleted !')
+    return redirect('view_staff')
