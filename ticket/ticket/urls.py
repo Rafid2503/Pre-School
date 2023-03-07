@@ -51,7 +51,7 @@ urlpatterns = [
     path('student/home',student.HOME,name='student_home'),
 
 #staff
-    path('Admin1/Staff/Add',admin1.ADD_STAFF,name='add_staff')
+    path('Admin1/Staff/Add',admin1.ADD_STAFF,name='add_staff'),
 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

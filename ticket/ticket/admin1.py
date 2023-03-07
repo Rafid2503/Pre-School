@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from app.models import Course,Session_Year,CustomUser,Student
+from app.models import Course,Session_Year,CustomUser,Student,Staff
 from django.contrib import messages
 
 
@@ -118,8 +118,38 @@ def ADD_SUBJECT(request):
     return render(request,'admin1/add_subject.html',context)
 
 
-def ADD_STAFF(requet):
-    return render(requet,'admin1/add_staff.html')
+def ADD_STAFF(request):
+    if request.method == "POST":
+        profile_pic = request.FILES.get("profile_pic")
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        address = request.POST.get('address')
+        gender = request.POST.get('gender')
+
+        if CustomUser.objects.filter(email=email).exists():
+            messages.warning(request,'Email Is Already Taken ! ')
+            return redirect('add_staff')
+        if CustomUser.objects.filter(username=username).exists():
+            messages.warning(request,'Username Is Already Taken ! ')
+            return redirect('add_staff')
+
+        else:
+            user = CustomUser(first_name=first_name,last_name=last_name,email=email,username=username, profile_pic=profile_pic, user_type= 2)
+            user.set_password(password)
+            user.save()
+
+            staff = Staff(
+                admin=user,
+                address=address,
+                gender=gender,
+            )
+            staff.save()
+            messages.success(request,'Staff Are Successfully Added!')
+            return redirect('add_staff')
+    return render(request,'admin1/add_staff.html')
 
 def EDIT_STUDENT(request,id):
     student=Student.objects.filter(id=id)
@@ -244,3 +274,4 @@ def DELETE_COURSE(request,id):
     course.delete()
     messages.success(request,'Course are sucessfuly deleted')
     return redirect('view_course')
+
