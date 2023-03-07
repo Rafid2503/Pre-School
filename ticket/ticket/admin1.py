@@ -89,6 +89,38 @@ def VIEW_STUDENT(request):
     return render(request,'admin1/view_student.html',context)
 
 
+<<<<<<< HEAD
+class Subject:
+    pass
+
+
+@login_required(login_url='/')
+def EDIT_SUBJECT(request,id):
+    subject=Subject.objects.get(id=id)
+    context={
+        'subject':subject
+    }
+    return render(request,'admin1/edit_subject.html',context)
+
+
+class Staff:
+    pass
+
+
+def ADD_SUBJECT(request):
+    course= Course.objects.all()
+    staff=Staff.objects.all()
+
+    context={
+        'course':course,
+        'staff':staff,
+    }
+    return render(request,'admin1/add_subject.html',context)
+
+
+def ADD_STAFF(requet):
+    return render(requet,'admin1/add_staff.html')
+=======
 def EDIT_STUDENT(request,id):
     student=Student.objects.filter(id=id)
     course=Course.objects.all()
@@ -149,6 +181,7 @@ def UPDATE_STUDENT(request):
 
 
     return render(request,'admin1/edit_student.html')
+<<<<<<< HEAD
 
 
 def DELETE_STUDENT(request,admin):
