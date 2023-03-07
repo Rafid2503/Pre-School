@@ -47,6 +47,10 @@ urlpatterns = [
 
 
 
+
+    path('admin1/student/edit/<str:id>',admin1.EDIT_STUDENT,name='edit_student'),
+    path('admin1/student/update',admin1.UPDATE_STUDENT,name='update_student'),
+
 #Student Panel
     path('student/home',student.HOME,name='student_home'),
 
