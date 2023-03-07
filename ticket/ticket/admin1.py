@@ -204,3 +204,43 @@ def ADD_COURSE(request):
         messages.success(request,'Course is successfully added')
         return redirect('add_course')
     return render(request,'admin1/add_course.html')
+
+
+def VIEW_COURSE(request):
+    course=Course.objects.all()
+    context = {
+        'course':course,
+
+    }
+
+    return render(request,'admin1/view_course.html',context)
+
+
+def EDIT_COURSE(request,id):
+    course=Course.objects.get(id=id)
+    context={
+        'course':course
+
+    }
+
+    return render(request,'admin1/edit_course.html',context)
+
+
+def UPDATE_COURSE(request):
+    if request.method=="POST":
+        name=request.POST.get('name')
+        course_id=request.POST.get('course_id')
+
+        course=Course.objects.get(id=course_id)
+        course.name=name
+        course.save()
+        messages.success(request,'Course are Successfully Updated ')
+        return redirect('view_course')
+    return render(request,'admin1/edit_course.html')
+
+
+def DELETE_COURSE(request,id):
+    course=Course.objects.get(id=id)
+    course.delete()
+    messages.success(request,'Course are sucessfuly deleted')
+    return redirect('view_course')
