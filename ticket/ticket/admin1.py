@@ -89,11 +89,6 @@ def VIEW_STUDENT(request):
     return render(request,'admin1/view_student.html',context)
 
 
-
-class Subject:
-    pass
-
-
 @login_required(login_url='/')
 def EDIT_SUBJECT(request,id):
     subject=Subject.objects.get(id=id)
@@ -101,10 +96,6 @@ def EDIT_SUBJECT(request,id):
         'subject':subject
     }
     return render(request,'admin1/edit_subject.html',context)
-
-
-class Staff:
-    pass
 
 
 def ADD_SUBJECT(request):
