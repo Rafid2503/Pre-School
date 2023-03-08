@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin1/home',admin1.HOME,name='admin_home'),
     path('admin1/student/add',admin1.ADD_STUDENT,name='add_student'),
     path('admin1/student/view',admin1.VIEW_STUDENT,name='view_student'),
-    path('Admin1/Subject/Edit/<str:id>',admin1.EDIT_SUBJECT,name='edit_subject'),
     path('admin1/student/edit/<str:id>',admin1.EDIT_STUDENT,name='edit_student'),
     path('admin1/student/update',admin1.UPDATE_STUDENT,name='update_student'),
     path('admin1/student/delete<str:admin>',admin1.DELETE_STUDENT,name='delete_student'),
@@ -38,13 +37,17 @@ urlpatterns = [
 
 # Admin panel(Fuad)
     path('Admin1/Subject/Add', admin1.ADD_SUBJECT, name='add_subject'),
-    path('Amin1/Subject/View',admin1.VIEW_SUBJECT,name='view_subject'),
+    path('Admin1/Subject/View',admin1.VIEW_SUBJECT,name='view_subject'),
+    path('Admin1/Subject/Edit/<str:id>', admin1.EDIT_SUBJECT, name='edit_subject'),
+    path('Admin1/Subject/Update',admin1.UPDATE_SUBJECT,name='update_subject'),
+    path('Admin1/Subject/Delete/<str:id>',admin1.DELETE_SUBJECT,name='delete_subject'),
 
 
-
-
-
-
+    path('Admin1/Session/Add',admin1.ADD_SESSION,name='add_session'),
+    path('Admin1/Session/View',admin1.VIEW_SESSION, name='view_session'),
+    path('Admin1/Session/Edit/<str:id>', admin1.EDIT_SESSION, name='edit_session'),
+    path('Admin1/Session/Update',admin1.UPDATE_SESSION, name='update_session'),
+    path('Amdin1/Session/Delete/<str:id>',admin1.DELETE_SESSION,name='delete_session'),
 
 
 
