@@ -33,7 +33,8 @@ urlpatterns = [
     path('admin1/course/delete/<str:id>',admin1.DELETE_COURSE,name='delete_course'),
     path('admin1/staff/send_notification',admin1.STAFF_SEND_NOTIFICATION,name='staff_send_notification'),
     path('admin1/staff/save_notification',admin1.SAVE_STAFF_NOTIFICATION,name='save_staff_notification'),
-
+    path('admin1/student/send_notification',admin1.STUDENT_SEND_NOTIFICATION,name='student_send_notification'),
+    path('admin1/student/save_notification',admin1.SAVE_STUDENT_NOTIFICATION,name='save_student_notification'),
 
 
 
@@ -76,5 +77,6 @@ urlpatterns = [
 
 #staff
     path('staff/home', staff.HOME, name='staff_home'),
+    path('staff/notifications', staff.NOTIFICATIONS, name='staff_notifications'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
