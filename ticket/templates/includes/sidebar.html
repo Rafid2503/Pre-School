@@ -50,6 +50,9 @@
                         </ul>
                      </li>
                      <li>
+                        <a href="{% url 'staff_send_notification' %}"><i class="fas fa-comment"></i> <span>Send Staff Notification</span></a>
+                     </li>
+                     <li>
                         <a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>View Attendance</span></a>
                      </li>
                      <li>
@@ -70,6 +73,42 @@
 
 
                   </ul>
+                   {% elif user.user_type == '2' %}
+                  <ul>
+                     <li class="menu-title">
+                        <span>Main Menu</span>
+                     </li>
+                     <li>
+                        <a href="{% url 'admin_home' %}"><i class="fas fa-holly-berry"></i> <span>Dashboard</span></a>
+                     </li>
+                     <li>
+                        <a href="{% url 'admin_home' %}"><i class="fas fa-calendar-alt"></i> <span>Take Attendance</span></a>
+                     </li>
+                     <li>
+                        <a href="{% url 'admin_home' %}"><i class="fas fa-calendar-alt"></i> <span>View/Update Attendance</span></a>
+                     </li>
+                     <li>
+                        <a href="{% url 'admin_home' %}"><i class="fas fa-poll-h"></i> <span>Add Result</span></a>
+                     </li>
+                     <li>
+                        <a href="{% url 'admin_home' %}"><i class="fas fa-envelope-open"></i> <span>Apply For Leave</span></a>
+                     </li>
+                     <li>
+                        <a href="{% url 'admin_home' %}"><i class="fas fa-comment"></i> <span>Send Feedback</span></a>
+                     </li>
+                     <li>
+                        <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+                     </li>
+
+
+
+                  </ul>
+
+
+
+
+
+
                   {% else %}
                   <ul>
                      <li class="menu-title">
