@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from app.models import Course,Session_Year,CustomUser,Student,Staff,Subject
+from app.models import Course,Session_Year,CustomUser,Student,Staff,Subject,Staff_Notification
 from django.contrib import messages
 
 
@@ -351,3 +351,33 @@ def VIEW_SUBJECT(request):
         'subject':subject,
     }
     return render(request,'admin1/view_subject.html',context)
+
+
+def STAFF_SEND_NOTIFICATION(request):
+    staff=Staff.objects.all()
+    see_notification=Staff_Notification.objects.all().order_by('-id')
+    context={
+
+
+        'staff':staff,
+        'see_notification':see_notification,
+
+    }
+    return render(request,'admin1/staff_notification.html',context)
+
+
+def SAVE_STAFF_NOTIFICATION(request):
+    if request.method=="POST":
+        staff_id=request.POST.get('staff_id')
+        message=request.POST.get('message')
+
+        staff=Staff.objects.get(admin=staff_id)
+        notification=Staff_Notification(
+            staff_id=staff,
+            message=message,
+        )
+        notification.save()
+        messages.success(request,'Notification is Successfully sent')
+        return redirect('staff_send_notification')
+
+    return None

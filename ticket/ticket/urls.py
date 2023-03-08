@@ -32,18 +32,19 @@ urlpatterns = [
     path('admin1/course/edit/<str:id>',admin1.EDIT_COURSE,name='edit_course'),
     path('admin1/course/update',admin1.UPDATE_COURSE,name='update_course'),
     path('admin1/course/delete/<str:id>',admin1.DELETE_COURSE,name='delete_course'),
-
+    path('admin1/staff/send_notification',admin1.STAFF_SEND_NOTIFICATION,name='staff_send_notification'),
+    path('admin1/staff/save_notification',admin1.SAVE_STAFF_NOTIFICATION,name='save_staff_notification'),
 
 
 
 # Admin panel(Fuad)
     path('Admin1/Subject/Add', admin1.ADD_SUBJECT, name='add_subject'),
     path('Amin1/Subject/View',admin1.VIEW_SUBJECT,name='view_subject'),
-
-
-
-
-
+    path('Admin1/Staff/Add', admin1.ADD_STAFF, name='add_staff'),
+    path('Admin1/Staff/View', admin1.VIEW_STAFF, name='view_staff'),
+    path('Admin1/Staff/Edit/<str:id>', admin1.EDIT_STAFF, name='edit_staff'),
+    path('Admin1/Staff/Update', admin1.UPDATE_STAFF, name='update_staff'),
+    path('Admin/Staff/Delete/<str:admin>', admin1.DELETE_STAFF, name='delete_staff'),
 
 
 
@@ -54,12 +55,8 @@ urlpatterns = [
 #Student Panel
     path('student/home',student.HOME,name='student_home'),
 
-#staff
-    path('Admin1/Staff/Add',admin1.ADD_STAFF,name='add_staff'),
-    path('Admin1/Staff/View',admin1.VIEW_STAFF,name='view_staff'),
-    path('Admin1/Staff/Edit/<str:id>',admin1.EDIT_STAFF,name='edit_staff'),
-    path('Admin1/Staff/Update',admin1.UPDATE_STAFF,name='update_staff'),
-    path('Admin/Staff/Delete/<str:admin>',admin1.DELETE_STAFF,name='delete_staff')
 
+#staff
+    path('staff/home', staff.HOME, name='staff_home'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
