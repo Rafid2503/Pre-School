@@ -59,12 +59,19 @@ urlpatterns = [
     path('Admin1/Subject/Delete/<str:id>',admin1.DELETE_SUBJECT,name='delete_subject'),
 
 
-
+#Session
     path('Admin1/Session/Add',admin1.ADD_SESSION,name='add_session'),
     path('Admin1/Session/View',admin1.VIEW_SESSION, name='view_session'),
     path('Admin1/Session/Edit/<str:id>', admin1.EDIT_SESSION, name='edit_session'),
     path('Admin1/Session/Update',admin1.UPDATE_SESSION, name='update_session'),
     path('Amdin1/Session/Delete/<str:id>',admin1.DELETE_SESSION,name='delete_session'),
+
+#staff Leave
+    path('Staff/Apply_leave',staff.STAFF_APPLY_LEAVE,name='staff_apply_leave'),
+    path('Admin1/Staff/Leave_view', admin1.staff_leave_view, name='staff_leave_view'),
+    path('Staff/Apply_leave_save',staff.STAFF_APPLY_LEAVE_SAVE,name='staff_apply_leave_save'),
+    path('Admin1/Staff/approve_leave/<str:id>',admin1.STAFF_APPROVE_LEAVE,name='staff_approve_leave'),
+    path('Admin1/Staff/disapprove_leave/<str:id>',admin1.STAFF_DISAPPROVE_LEAVE,name='staff_disapprove_leave'),
 
 
 
