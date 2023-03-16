@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from app.models import Course,Session_Year,CustomUser,Student,Staff,Subject,Staff_Notification,Student_Notification,Staff_leave
+from app.models import Course,Session_Year,CustomUser,Student,Staff,Subject,Staff_Notification,Student_Notification,Staff_leave,Staff_Feedback
 from django.contrib import messages
 
 
@@ -25,6 +25,7 @@ def HOME(request):
     }
 
     return render(request,'admin1/home.html',context)
+
 
 @login_required(login_url='/')
 def ADD_STUDENT(request):
@@ -137,6 +138,7 @@ def ADD_SUBJECT(request):
     }
     return render(request,'admin1/add_subject.html',context)
 
+
 @login_required(login_url='/')
 def ADD_STAFF(request):
     if request.method == "POST":
@@ -170,6 +172,7 @@ def ADD_STAFF(request):
             messages.success(request,'Staff Are Successfully Added!')
             return redirect('add_staff')
     return render(request,'admin1/add_staff.html')
+
 
 @login_required(login_url='/')
 def EDIT_STUDENT(request,id):
@@ -243,6 +246,7 @@ def DELETE_STUDENT(request,admin):
     return redirect('view_student')
     return None
 
+
 @login_required(login_url='/')
 def ADD_COURSE(request):
 
@@ -257,6 +261,7 @@ def ADD_COURSE(request):
         return redirect('add_course')
     return render(request,'admin1/add_course.html')
 
+
 @login_required(login_url='/')
 def VIEW_COURSE(request):
     course=Course.objects.all()
@@ -267,6 +272,7 @@ def VIEW_COURSE(request):
 
     return render(request,'admin1/view_course.html',context)
 
+
 @login_required(login_url='/')
 def EDIT_COURSE(request,id):
     course=Course.objects.get(id=id)
@@ -276,6 +282,7 @@ def EDIT_COURSE(request,id):
     }
 
     return render(request,'admin1/edit_course.html',context)
+
 
 @login_required(login_url='/')
 def UPDATE_COURSE(request):
@@ -290,12 +297,14 @@ def UPDATE_COURSE(request):
         return redirect('view_course')
     return render(request,'admin1/edit_course.html')
 
+
 @login_required(login_url='/')
 def DELETE_COURSE(request,id):
     course=Course.objects.get(id=id)
     course.delete()
     messages.success(request,'Course are sucessfuly deleted')
     return redirect('view_course')
+
 
 @login_required(login_url='/')
 def VIEW_STAFF(request):
@@ -307,6 +316,7 @@ def VIEW_STAFF(request):
     print(staff)
     return render(request,'admin1/view_staff.html',context)
 
+
 @login_required(login_url='/')
 def EDIT_STAFF(request,id):
     staff = Staff.objects.get(id=id)
@@ -315,6 +325,7 @@ def EDIT_STAFF(request,id):
         'staff':staff,
     }
     return render(request,'admin1/edit_staff.html',context)
+
 
 @login_required(login_url='/')
 def UPDATE_STAFF(request):
@@ -349,12 +360,14 @@ def UPDATE_STAFF(request):
 
     return render(request,'admin1/edit_staff.html')
 
+
 @login_required(login_url='/')
 def DELETE_STAFF(request,admin):
     staff = CustomUser.objects.get(id = admin)
     staff.delete()
     messages.success(request,'Record Are Successfully Deleted !')
     return redirect('view_staff')
+
 
 @login_required(login_url='/')
 def VIEW_SUBJECT(request):
@@ -366,12 +379,7 @@ def VIEW_SUBJECT(request):
 
 
 
-
-
-
-
-
-
+@login_required(login_url='/')
 def STAFF_SEND_NOTIFICATION(request):
     staff=Staff.objects.all()
     see_notification=Staff_Notification.objects.all().order_by('-id')
@@ -385,10 +393,7 @@ def STAFF_SEND_NOTIFICATION(request):
     return render(request,'admin1/staff_notification.html',context)
 
 
-
-
-
-
+@login_required(login_url='/')
 def SAVE_STAFF_NOTIFICATION(request):
     if request.method=="POST":
         staff_id=request.POST.get('staff_id')
@@ -406,9 +411,7 @@ def SAVE_STAFF_NOTIFICATION(request):
     return None
 
 
-
-
-
+@login_required(login_url='/')
 def UPDATE_SUBJECT(request):
     if request.method == "POST":
         subject_id=request.POST.get('subject_id')
@@ -437,6 +440,7 @@ def DELETE_SUBJECT(request,id):
     return redirect('view_subject')
 
 
+@login_required(login_url='/')
 def ADD_SESSION(request):
     if request.method == "POST":
         session_year_start = request.POST.get('session_year_start')
@@ -452,6 +456,7 @@ def ADD_SESSION(request):
     return render(request,'admin1/add_session.html')
 
 
+@login_required(login_url='/')
 def VIEW_SESSION(request):
     session= Session_Year.objects.all()
 
@@ -461,6 +466,7 @@ def VIEW_SESSION(request):
     return render(request,'admin1/view_session.html',context)
 
 
+@login_required(login_url='/')
 def EDIT_SESSION(request,id):
     session = Session_Year.objects.filter(id=id)
     context={
@@ -469,6 +475,7 @@ def EDIT_SESSION(request,id):
     return render(request,'admin1/edit_session.html',context)
 
 
+@login_required(login_url='/')
 def UPDATE_SESSION(request):
     if request.method == "POST":
         session_id=request.POST.get('session_id')
@@ -485,6 +492,7 @@ def UPDATE_SESSION(request):
     return redirect('view_session')
 
 
+@login_required(login_url='/')
 def DELETE_SESSION(request,id):
     session = Session_Year.objects.get(id=id)
     session.delete()
@@ -492,6 +500,7 @@ def DELETE_SESSION(request,id):
     return redirect('view_session')
 
 
+@login_required(login_url='/')
 def STUDENT_SEND_NOTIFICATION(request):
     student=Student.objects.all()
 
@@ -502,6 +511,7 @@ def STUDENT_SEND_NOTIFICATION(request):
     return render(request,'admin1/student_notification.html',context)
 
 
+@login_required(login_url='/')
 def SAVE_STUDENT_NOTIFICATION(request):
     if request.method=="POST":
         message=request.POST.get('message')
@@ -521,6 +531,7 @@ def SAVE_STUDENT_NOTIFICATION(request):
         return redirect('student_send_notification')
 
 
+@login_required(login_url='/')
 def staff_leave_view(request):
     staff_leave=Staff_leave.objects.all()
     context={
@@ -529,6 +540,7 @@ def staff_leave_view(request):
     return render(request,'admin1/staff_leave.html',context)
 
 
+@login_required(login_url='/')
 def STAFF_APPROVE_LEAVE(request,id):
     leave=Staff_leave.objects.get(id = id)
     leave.status = 1
@@ -536,8 +548,30 @@ def STAFF_APPROVE_LEAVE(request,id):
     return redirect('staff_leave_view')
 
 
+@login_required(login_url='/')
 def STAFF_DISAPPROVE_LEAVE(request,id):
     leave=Staff_leave.objects.get(id = id)
     leave.status = 2
     leave.save()
     return redirect('staff_leave_view')
+
+
+def STAFF_FEEDBACK(request):
+    feedback = Staff_Feedback.objects.all()
+
+    context = {
+        'feedback':feedback,
+    }
+    return render(request,'admin1/staff_feedback.html',context)
+
+
+def STAFF_FEEDBACK_SAVE(request):
+    if request.method == "POST":
+        feedback_id = request.POST.get('feedback_id')
+        feedback_reply = request.POST.get('feedback_reply')
+
+        feedback = Staff_Feedback.objects.get(id = feedback_id)
+        feedback.feedback_reply = feedback_reply
+        feedback.save()
+
+        return redirect('staff_feedback_reply')

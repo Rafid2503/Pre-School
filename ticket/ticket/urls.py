@@ -58,13 +58,16 @@ urlpatterns = [
     path('Admin1/Subject/Update',admin1.UPDATE_SUBJECT,name='update_subject'),
     path('Admin1/Subject/Delete/<str:id>',admin1.DELETE_SUBJECT,name='delete_subject'),
 
+    path('Admin1/Staff/feedback',admin1.STAFF_FEEDBACK, name = 'staff_feedback_reply'),
+    path('Admin1/Staff/feedback/save',admin1.STAFF_FEEDBACK_SAVE, name = 'staff_feedback_reply_save'),
+
 
 #Session
     path('Admin1/Session/Add',admin1.ADD_SESSION,name='add_session'),
     path('Admin1/Session/View',admin1.VIEW_SESSION, name='view_session'),
     path('Admin1/Session/Edit/<str:id>', admin1.EDIT_SESSION, name='edit_session'),
     path('Admin1/Session/Update',admin1.UPDATE_SESSION, name='update_session'),
-    path('Amdin1/Session/Delete/<str:id>',admin1.DELETE_SESSION,name='delete_session'),
+    path('Admin1/Session/Delete/<str:id>',admin1.DELETE_SESSION,name='delete_session'),
 
 #staff Leave
     path('Staff/Apply_leave',staff.STAFF_APPLY_LEAVE,name='staff_apply_leave'),
@@ -85,5 +88,9 @@ urlpatterns = [
 #staff
     path('staff/home', staff.HOME, name='staff_home'),
     path('staff/notifications', staff.NOTIFICATIONS, name='staff_notifications'),
+
+#staff feedback
+    path('Staff/Feedback',staff.STAFF_FEEDBACK,name= 'staff_feedback'),
+    path('Staff/Feedback/Save',staff.STAFF_FEEDBACK_SAVE, name='staff_feedback_save'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
