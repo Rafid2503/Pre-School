@@ -37,6 +37,15 @@
 
                                     <tr>
                                        <td>{{i.message}}</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             {% if i.status == 0 %}
+                                             <a href="{% url 'staff_notifications_mark_as_done' status=i.id %}" class="btn btn-danger">Mark as Read</a>
+                                             {% else %}
+                                             <button class="btn btn-danger" disabled="disabled">Mark as Read</button>
+                                             {% endif %}
+                                          </div>
+                                       </td>
 
 
 

@@ -46,3 +46,10 @@ def STAFF_APPLY_LEAVE_SAVE(request):
         leave.save()
         messages.success(request,'Leave Message Successfully Send ! ')
     return redirect('staff_apply_leave')
+
+
+def STAFF_NOTIFICATION_MARK_AS_DONE(request,status):
+    notification=Staff_Notification.objects.get(id=status)
+    notification.status=1
+    notification.save()
+    return redirect('staff_notifications')

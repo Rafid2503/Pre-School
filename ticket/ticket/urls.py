@@ -85,5 +85,6 @@ urlpatterns = [
 #staff
     path('staff/home', staff.HOME, name='staff_home'),
     path('staff/notifications', staff.NOTIFICATIONS, name='staff_notifications'),
+    path('staff/mark_as_done/<str:status>', staff.STAFF_NOTIFICATION_MARK_AS_DONE, name='staff_notifications_mark_as_done'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
