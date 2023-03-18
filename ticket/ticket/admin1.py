@@ -503,9 +503,10 @@ def DELETE_SESSION(request,id):
 @login_required(login_url='/')
 def STUDENT_SEND_NOTIFICATION(request):
     student=Student.objects.all()
-
+    notification= Staff_Notification.objects.all()
     context={
         'student':student,
+        'notification':notification,
 
     }
     return render(request,'admin1/student_notification.html',context)
@@ -521,9 +522,6 @@ def SAVE_STUDENT_NOTIFICATION(request):
 
             student_id=student,
             message =message,
-
-
-
         )
         stud_notification.save()
         messages.success(request,'Notification Successfully Sent')
