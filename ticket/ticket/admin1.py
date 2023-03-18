@@ -382,7 +382,7 @@ def VIEW_SUBJECT(request):
 @login_required(login_url='/')
 def STAFF_SEND_NOTIFICATION(request):
     staff=Staff.objects.all()
-    see_notification=Staff_Notification.objects.all().order_by('-id')
+    see_notification=Staff_Notification.objects.all().order_by('-id')[0:5]
     context={
 
 

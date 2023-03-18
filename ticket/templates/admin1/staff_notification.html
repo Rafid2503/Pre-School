@@ -88,7 +88,7 @@
                                        <th style="width:60%">Message</th>
 
 
-                                       <th class="text-right">Status</th>
+                                       <th style="width:30%" class="text-right">Status</th>
                                     </tr>
                                  </thead>
                                  <tbody>
@@ -96,6 +96,13 @@
 
                                     <tr>
                                        <td>{{i.message}}</td>
+
+                                        {% if i.status == 0 %}
+                                        <td><span class="badge badge-danger">Unread The Message</span></td>
+                                        {% else %}
+                                        <td><span class="badge badge-success">Read The Message</span></td>
+                                        {% endif %}
+
 
                                        <td>{{i.admin.email}}</td>
 

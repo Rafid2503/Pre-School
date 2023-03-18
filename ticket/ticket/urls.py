@@ -87,6 +87,7 @@ urlpatterns = [
 #staff notification
     path('staff/home', staff.HOME, name='staff_home'),
     path('staff/notifications', staff.NOTIFICATIONS, name='staff_notifications'),
+    path('staff/mark_as_done/<str:status>', staff.STAFF_NOTIFICATION_MARK_AS_DONE, name='staff_notifications_mark_as_done'),
 
 #Student notification
     path('admin1/student/send_notification', admin1.STUDENT_SEND_NOTIFICATION, name='student_send_notification'),
