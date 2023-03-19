@@ -33,8 +33,7 @@ urlpatterns = [
     path('admin1/course/delete/<str:id>',admin1.DELETE_COURSE,name='delete_course'),
     path('admin1/staff/send_notification',admin1.STAFF_SEND_NOTIFICATION,name='staff_send_notification'),
     path('admin1/staff/save_notification',admin1.SAVE_STAFF_NOTIFICATION,name='save_staff_notification'),
-    path('admin1/student/send_notification',admin1.STUDENT_SEND_NOTIFICATION,name='student_send_notification'),
-    path('admin1/student/save_notification',admin1.SAVE_STUDENT_NOTIFICATION,name='save_student_notification'),
+
 
 
 
@@ -85,12 +84,23 @@ urlpatterns = [
     path('student/home',student.HOME,name='student_home'),
 
 
-#staff
+#staff notification
     path('staff/home', staff.HOME, name='staff_home'),
     path('staff/notifications', staff.NOTIFICATIONS, name='staff_notifications'),
     path('staff/mark_as_done/<str:status>', staff.STAFF_NOTIFICATION_MARK_AS_DONE, name='staff_notifications_mark_as_done'),
+
+
+
+
     path('staff/take_attendance', staff.STAFF_TAKE_ATTENDANCE, name='staff_take_attendance'),
     path('staff/save_attendance', staff.STAFF_SAVE_ATTENDANCE, name='staff_save_attendance'),
+
+
+#Student notification
+    path('admin1/student/send_notification', admin1.STUDENT_SEND_NOTIFICATION, name='student_send_notification'),
+    path('admin1/student/save_notification', admin1.SAVE_STUDENT_NOTIFICATION, name='save_student_notification'),
+
+
 #staff feedback
     path('Staff/Feedback',staff.STAFF_FEEDBACK,name= 'staff_feedback'),
     path('Staff/Feedback/Save',staff.STAFF_FEEDBACK_SAVE, name='staff_feedback_save'),

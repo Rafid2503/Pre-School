@@ -52,7 +52,7 @@
 
                                        <td class="text-right">
                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#sendnotification-{{forloop.counter}}">
-                                             Send Notification
+                                             Send Student Notification
                                            </button>
                                        </td>
                                     </tr>
@@ -92,15 +92,14 @@
                                     </tr>
                                  </thead>
                                  <tbody>
-                                 {% for i in see_notification %}
-
+                                 {% for i in notification %}
                                     <tr>
                                        <td>{{i.message}}</td>
-
-                                       <td>{{i.admin.email}}</td>
-
-
-                                       <td class="text-right">
+                                        {% if i.status == 0 %}
+                                        <td><span class="badge badge-danger">UnRead The Message</span></td>
+                                        {% else %}
+                                         <td><span class="badge badge-danger">UnRead The Message</span></td>
+                                        {% endif %}
 
                                        </td>
                                     </tr>
