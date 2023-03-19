@@ -89,7 +89,8 @@ urlpatterns = [
     path('staff/home', staff.HOME, name='staff_home'),
     path('staff/notifications', staff.NOTIFICATIONS, name='staff_notifications'),
     path('staff/mark_as_done/<str:status>', staff.STAFF_NOTIFICATION_MARK_AS_DONE, name='staff_notifications_mark_as_done'),
-
+    path('staff/take_attendance', staff.STAFF_TAKE_ATTENDANCE, name='staff_take_attendance'),
+    path('staff/save_attendance', staff.STAFF_SAVE_ATTENDANCE, name='staff_save_attendance'),
 #staff feedback
     path('Staff/Feedback',staff.STAFF_FEEDBACK,name= 'staff_feedback'),
     path('Staff/Feedback/Save',staff.STAFF_FEEDBACK_SAVE, name='staff_feedback_save'),
