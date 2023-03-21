@@ -159,3 +159,7 @@ def STAFF_SAVE_ATTENDANCE(request):
 
 
     return redirect('staff_take_attendance')
+
+
+def STAFF_VIEW_ATTENDANCE(request):
+    return render(request,'staff/view_attendance.html')

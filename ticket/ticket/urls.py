@@ -94,6 +94,7 @@ urlpatterns = [
 
     path('staff/take_attendance', staff.STAFF_TAKE_ATTENDANCE, name='staff_take_attendance'),
     path('staff/save_attendance', staff.STAFF_SAVE_ATTENDANCE, name='staff_save_attendance'),
+    path('staff/view_attendance', staff.STAFF_VIEW_ATTENDANCE, name='staff_view_attendance'),
 
 
 #Student notification
