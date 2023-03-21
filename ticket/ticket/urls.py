@@ -33,6 +33,7 @@ urlpatterns = [
     path('admin1/course/delete/<str:id>',admin1.DELETE_COURSE,name='delete_course'),
     path('admin1/staff/send_notification',admin1.STAFF_SEND_NOTIFICATION,name='staff_send_notification'),
     path('admin1/staff/save_notification',admin1.SAVE_STAFF_NOTIFICATION,name='save_staff_notification'),
+    path('admin1/view/attendance',admin1.VIEW_ATTENDANCE,name='view_attendance'),
 
 
 
@@ -82,6 +83,7 @@ urlpatterns = [
 
 #Student Panel
     path('student/home',student.HOME,name='student_home'),
+    path('student/view_attendance',student.STUDENT_VIEW_ATTENDANCE,name='student_view_attendance'),
 
 
 #staff notification

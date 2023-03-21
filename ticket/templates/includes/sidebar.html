@@ -62,7 +62,7 @@
                 </li>
                 <li>
                 <li>
-                    <a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>View Attendance</span></a>
+                    <a href="{% url 'view_attendance' %}"><i class="fas fa-holly-berry"></i> <span>View Attendance</span></a>
                 </li>
                 <li>
                     <a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Teacher Feedback</span></a>
@@ -99,7 +99,7 @@
                         <span>Take Attendance</span></a>
                 </li>
                 <li>
-                    <a href="{% url 'admin_home' %}"><i class="fas fa-calendar-alt"></i>
+                    <a href="{% url 'staff_view_attendance' %}"><i class="fas fa-calendar-alt"></i>
                         <span>View/Update Attendance</span></a>
                 </li>
                 <li>
@@ -128,7 +128,7 @@
                     <a href="{% url 'student_home' %}"><i class="fas fa-holly-berry"></i> <span>Dashboard</span></a>
                 </li>
                 <li class="">
-                    <a href=""><i class="fa fa-calendar" aria-hidden="true"></i><span>View Attendance</span></a>
+                    <a href="{% url 'student_view_attendance' %}"><i class="fa fa-calendar" aria-hidden="true"></i><span>View Attendance</span></a>
                 </li>
                 <li class="">
                     <a href=""><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>View Result</span></a>
