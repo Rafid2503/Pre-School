@@ -84,6 +84,8 @@ urlpatterns = [
 #Student Panel
     path('student/home',student.HOME,name='student_home'),
     path('student/view_attendance',student.STUDENT_VIEW_ATTENDANCE,name='student_view_attendance'),
+    path('student/view_result',student.STUDENT_VIEW_RESULT,name='student_view_result'),
+
 
 
 #staff notification
@@ -107,5 +109,12 @@ urlpatterns = [
 #staff feedback
     path('Staff/Feedback',staff.STAFF_FEEDBACK,name= 'staff_feedback'),
     path('Staff/Feedback/Save',staff.STAFF_FEEDBACK_SAVE, name='staff_feedback_save'),
+
+#staff addresult
+    path('staff/add/result', staff.STAFF_ADD_RESULT, name='staff_add_result'),
+    path('staff/save/result', staff.STAFF_SAVE_RESULT, name='staff_save_result'),
+
+
+
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

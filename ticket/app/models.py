@@ -39,6 +39,12 @@ class Student(models.Model):
 
     def __str__(self):
         return self.admin.first_name + " " + self.admin.last_name
+
+
+
+
+
+
 # Create your models here.
 
 class Staff(models.Model):
@@ -129,5 +135,15 @@ class Staff_Feedback(models.Model):
 
 
 
+class StudentResult(models.Model):
+    student_id = models.ForeignKey(Student,on_delete=models.CASCADE,related_name='student_result_student_id')
+    subject_id = models.ForeignKey(Subject,on_delete=models.CASCADE,related_name='student_result_subject_id')
+    assignment_mark = models.IntegerField()
+    exam_mark = models.IntegerField()
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.student_id.admin.first_name
 
 

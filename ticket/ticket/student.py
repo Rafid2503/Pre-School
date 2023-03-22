@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from app.models import Staff,Staff_Notification,Staff_leave,Staff_Feedback,Subject,Session_Year,Student,Attendance,Attendance_Report
+from app.models import Staff,Staff_Notification,Staff_leave,Staff_Feedback,Subject,Session_Year,Student,Attendance,Attendance_Report,StudentResult
 
 
 def HOME(request):
@@ -33,3 +33,24 @@ def STUDENT_VIEW_ATTENDANCE(request):
     }
 
     return render(request,'students/view_attendance.html',context)
+
+
+def STUDENT_VIEW_RESULT(request):
+
+    student=Student.objects.get(admin=request.user.id)
+    result=StudentResult.objects.filter(student_id=student)
+
+    mark=None
+    for i in result:
+        assignment_mark=i.assignment_mark
+        exam_mark=i.exam_mark
+        mark=assignment_mark+exam_mark
+
+    context={
+
+       'result':result,
+        'mark':mark,
+
+    }
+
+    return render(request,'students/view_result.html',context)
