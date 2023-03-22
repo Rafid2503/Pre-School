@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from app.models import Staff,Staff_Notification,Staff_leave,Staff_Feedback,Subject,Session_Year,Student,Attendance,Attendance_Report,StudentResult, Student_Notification
+from app.models import Staff,Staff_Notification,Staff_leave,Staff_Feedback,Subject,Session_Year,Student,Attendance,Attendance_Report,StudentResult, Student_Notification,Student_Feedback
 
 
 def HOME(request):
@@ -74,3 +74,27 @@ def STAFF_NOTIFICATION_MARK_AS_DONE(request,status):
     notification.save()
 
     return redirect('student_notification')
+
+
+def STUDENT_FEEDBACK(request):
+    student_id=Student.objects.get(admin=request.user.id)
+    feedback_history= Student_Feedback.objects.filter(student_id=student_id)
+
+    context={
+        'feedback_history':feedback_history,
+
+    }
+    return render(request, 'students/feedback.html',context)
+
+
+def STUDENT_FEEDBACK_SAVE(request):
+    if request.method == "POST":
+        feedback = request.POST.get('feedback')
+        student = Student.objects.get(admin=request.user.id)
+        feedbacks = Student_Feedback(
+            student_id =student,
+            feedback=feedback,
+            feedback_reply ="",
+        )
+        feedbacks.save()
+        return redirect('student_feedback')

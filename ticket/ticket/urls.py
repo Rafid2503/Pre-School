@@ -61,6 +61,9 @@ urlpatterns = [
     path('Admin1/Staff/feedback',admin1.STAFF_FEEDBACK, name = 'staff_feedback_reply'),
     path('Admin1/Staff/feedback/save',admin1.STAFF_FEEDBACK_SAVE, name = 'staff_feedback_reply_save'),
 
+    path('admin1/student/feedback',admin1.STUDENT_FEEDBACK, name='get_student_feedback'),
+    path('admin1/student/feedback/reply/save',admin1.REPLY_STUDENT_FEEDBACK, name='reply_student_feedback'),
+
 
 #Session
     path('Admin1/Session/Add',admin1.ADD_SESSION,name='add_session'),
@@ -87,16 +90,14 @@ urlpatterns = [
     path('student/view_result',student.STUDENT_VIEW_RESULT,name='student_view_result'),
     path('student/Notifications',student.STUDENT_NOTIFICATION,name='student_notification'),
     path('student/mark_as_done/<str:status>', student.STAFF_NOTIFICATION_MARK_AS_DONE, name='student_notifications_mark_as_done'),
-
+    path('student/feedback',student.STUDENT_FEEDBACK, name='student_feedback'),
+    path('student/feedback/save',student.STUDENT_FEEDBACK_SAVE, name='student_feedback_save'),
 
 
 #staff notification
     path('staff/home', staff.HOME, name='staff_home'),
     path('staff/notifications', staff.NOTIFICATIONS, name='staff_notifications'),
     path('staff/mark_as_done/<str:status>', staff.STAFF_NOTIFICATION_MARK_AS_DONE, name='staff_notifications_mark_as_done'),
-
-
-
 
     path('staff/take_attendance', staff.STAFF_TAKE_ATTENDANCE, name='staff_take_attendance'),
     path('staff/save_attendance', staff.STAFF_SAVE_ATTENDANCE, name='staff_save_attendance'),

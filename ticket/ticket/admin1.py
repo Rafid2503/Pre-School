@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from app.models import Course,Session_Year,CustomUser,Student,Staff,Subject,Staff_Notification,Student_Notification,Staff_leave,Staff_Feedback,Attendance,Attendance_Report
+from app.models import Course,Session_Year,CustomUser,Student,Staff,Subject,Staff_Notification,Student_Notification,Staff_leave,Staff_Feedback,Attendance,Attendance_Report,Student_Feedback
 from django.contrib import messages
 
 
@@ -555,11 +555,33 @@ def STAFF_DISAPPROVE_LEAVE(request,id):
     return redirect('staff_leave_view')
 
 
-def STAFF_FEEDBACK(request):
-    feedback = Staff_Feedback.objects.all()
-
+def STUDENT_FEEDBACK(request):
+    feedback = Student_Feedback.objects.all()
+    feedback_history= Student_Feedback.objects.all().order_by('-id')[0:5]
     context = {
         'feedback':feedback,
+        'feedback_history':feedback_history,
+
+    }
+    return render(request,'admin1/student_feedback.html',context)
+
+def REPLY_STUDENT_FEEDBACK(request):
+    if request.method =="POST":
+        feedback_id = request.POST.get('feedback_id')
+        feedback_reply = request.POST.get('feedback_reply')
+
+        feedback = Student_Feedback.objects.get(id=feedback_id)
+        feedback.feedback_reply = feedback_reply
+        feedback.status = 1
+        feedback.save()
+        return redirect('get_student_feedback')
+
+def STAFF_FEEDBACK(request):
+    feedback = Staff_Feedback.objects.all()
+    feedback_history = Staff_Feedback.objects.all().order_by('-id')[0:5]
+    context = {
+        'feedback':feedback,
+        'feedback_history':feedback_history,
     }
     return render(request,'admin1/staff_feedback.html',context)
 
@@ -571,6 +593,7 @@ def STAFF_FEEDBACK_SAVE(request):
 
         feedback = Staff_Feedback.objects.get(id = feedback_id)
         feedback.feedback_reply = feedback_reply
+        feedback.status =1
         feedback.save()
 
         return redirect('staff_feedback_reply')
@@ -611,3 +634,5 @@ def VIEW_ATTENDANCE(request):
 
     }
     return render(request,'admin1/view_attendance.html',context)
+
+
