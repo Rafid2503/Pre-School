@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from app.models import Staff,Staff_Notification,Staff_leave,Staff_Feedback,Subject,Session_Year,Student,Attendance,Attendance_Report,StudentResult
+from app.models import Staff,Staff_Notification,Staff_leave,Staff_Feedback,Subject,Session_Year,Student,Attendance,Attendance_Report,StudentResult, Student_Notification
 
 
 def HOME(request):
@@ -54,3 +54,23 @@ def STUDENT_VIEW_RESULT(request):
     }
 
     return render(request,'students/view_result.html',context)
+
+
+def STUDENT_NOTIFICATION(request):
+    student = Student.objects.filter(admin= request.user.id)
+    for i in student:
+        student_id=i.id
+        notification =Student_Notification.objects.filter(student_id= student_id)
+        context={
+            'notification':notification
+        }
+
+    return render(request,'students/notification.html',context)
+
+
+def STAFF_NOTIFICATION_MARK_AS_DONE(request,status):
+    notification = Student_Notification.objects.get(id = status)
+    notification.status=1
+    notification.save()
+
+    return redirect('student_notification')

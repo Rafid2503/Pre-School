@@ -503,7 +503,7 @@ def DELETE_SESSION(request,id):
 @login_required(login_url='/')
 def STUDENT_SEND_NOTIFICATION(request):
     student=Student.objects.all()
-    notification= Staff_Notification.objects.all()
+    notification= Student_Notification.objects.all()
     context={
         'student':student,
         'notification':notification,
@@ -514,9 +514,10 @@ def STUDENT_SEND_NOTIFICATION(request):
 
 @login_required(login_url='/')
 def SAVE_STUDENT_NOTIFICATION(request):
-    if request.method=="POST":
+    if request.method == "POST":
         message=request.POST.get('message')
         student_id=request.POST.get('student_id')
+
         student=Student.objects.get(admin=student_id)
         stud_notification=Student_Notification(
 

@@ -85,6 +85,8 @@ urlpatterns = [
     path('student/home',student.HOME,name='student_home'),
     path('student/view_attendance',student.STUDENT_VIEW_ATTENDANCE,name='student_view_attendance'),
     path('student/view_result',student.STUDENT_VIEW_RESULT,name='student_view_result'),
+    path('student/Notifications',student.STUDENT_NOTIFICATION,name='student_notification'),
+    path('student/mark_as_done/<str:status>', student.STAFF_NOTIFICATION_MARK_AS_DONE, name='student_notifications_mark_as_done'),
 
 
 
