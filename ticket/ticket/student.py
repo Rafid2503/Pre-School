@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from app.models import Staff,Staff_Notification,Staff_leave,Staff_Feedback,Subject,Session_Year,Student,Attendance,Attendance_Report,StudentResult, Student_Notification,Student_Feedback
-
+from app.models import Staff,Staff_Notification,Staff_leave,Staff_Feedback,Subject,Session_Year,Student,Attendance,Attendance_Report,StudentResult, Student_Notification,Student_Feedback, Student_leave
+from django.contrib import messages
 
 def HOME(request):
     return render(request,'students/home.html')
@@ -98,3 +98,29 @@ def STUDENT_FEEDBACK_SAVE(request):
         )
         feedbacks.save()
         return redirect('student_feedback')
+
+
+def STUDENT_LEAVE(request):
+    student =Student.objects.get(admin = request.user.id)
+    student_leave_history = Student_leave.objects.filter(student_id =student)
+    context={
+        'student_leave_history':student_leave_history
+    }
+    return render(request,'students/apply_leave.html',context)
+
+
+def STUDENT_LEAVE_SAVE(request):
+    if request.method =="POST":
+        Leave_date =request.POST.get('Leave_date')
+        Leave_message=request.POST.get('Leave_message')
+
+        student_id =Student.objects.get(admin=request.user.id)
+
+        student_leave= Student_leave(
+            student_id=student_id,
+            data=Leave_date,
+            message =Leave_message,
+        )
+        student_leave.save()
+        messages.success(request,'Leave Message Successfully Sent ! ')
+        return redirect('student_leave')

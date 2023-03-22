@@ -64,6 +64,11 @@ urlpatterns = [
     path('admin1/student/feedback',admin1.STUDENT_FEEDBACK, name='get_student_feedback'),
     path('admin1/student/feedback/reply/save',admin1.REPLY_STUDENT_FEEDBACK, name='reply_student_feedback'),
 
+    path('student/apply_for_leave', student.STUDENT_LEAVE, name='student_leave'),
+    path('student/Leave_save', student.STUDENT_LEAVE_SAVE, name='student_leave_save'),
+    path('admin1/student/Leave_view', admin1.STUDENT_LEAVE_VIEW, name='student_leave_view'),
+
+
 
 #Session
     path('Admin1/Session/Add',admin1.ADD_SESSION,name='add_session'),
@@ -93,6 +98,8 @@ urlpatterns = [
     path('student/feedback',student.STUDENT_FEEDBACK, name='student_feedback'),
     path('student/feedback/save',student.STUDENT_FEEDBACK_SAVE, name='student_feedback_save'),
 
+    path('Admin1/Student/approve_leave/<str:id>', admin1.STUDENT_APPROVE_LEAVE, name='student_approve_leave'),
+    path('Admin1/Student/disapprove_leave/<str:id>', admin1.STUDENT_DISAPPROVE_LEAVE,name='student_disapprove_leave'),
 
 #staff notification
     path('staff/home', staff.HOME, name='staff_home'),

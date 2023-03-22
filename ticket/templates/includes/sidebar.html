@@ -78,7 +78,7 @@
                     <a href="{% url 'staff_leave_view' %}"><i class="fa fa-share"></i> <span>Staff Leave</span></a>
                 </li>
                 <li>
-                    <a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Student Leave</span></a>
+                    <a href="{% url 'student_leave_view' %}"><i class="fas fa-holly-berry"></i> <span>Student Leave</span></a>
                 </li>
                 <li>
                     <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
@@ -134,7 +134,7 @@
                     <a href="{% url 'student_view_result' %}"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>View Result</span></a>
                 </li>
                 <li class="">
-                    <a href=""><i class="fa fa-share" aria-hidden="true"></i><span>Apply for Leave</span></a>
+                    <a href="{% url 'student_leave' %}"><i class="fa fa-share" aria-hidden="true"></i><span>Apply for Leave</span></a>
                 </li>
                 <li class="">
                     <a href="{% url 'student_feedback' %}"><i class="fa fa-comment" aria-hidden="true"></i><span>Send Feedback</span></a>

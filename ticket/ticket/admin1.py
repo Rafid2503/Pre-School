@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from app.models import Course,Session_Year,CustomUser,Student,Staff,Subject,Staff_Notification,Student_Notification,Staff_leave,Staff_Feedback,Attendance,Attendance_Report,Student_Feedback
+from app.models import Course,Session_Year,CustomUser,Student,Staff,Subject,Staff_Notification,Student_Notification,Staff_leave,Staff_Feedback,Attendance,Attendance_Report,Student_Feedback,Student_leave
 from django.contrib import messages
 
 
@@ -575,6 +575,28 @@ def REPLY_STUDENT_FEEDBACK(request):
         feedback.status = 1
         feedback.save()
         return redirect('get_student_feedback')
+
+def STUDENT_LEAVE_VIEW(request):
+    student_leave = Student_leave.objects.all()
+    context={
+        'student_leave':student_leave,
+    }
+
+    return render(request,'admin1/student_leave.html',context)
+
+
+def STUDENT_APPROVE_LEAVE(request,id):
+    leave =Student_leave.objects.get(id=id)
+    leave.status = 1
+    leave.save()
+    return redirect('student_leave_view')
+
+
+def STUDENT_DISAPPROVE_LEAVE(request,id):
+    leave = Student_leave.objects.get(id=id)
+    leave.status = 2
+    leave.save()
+    return redirect('student_leave_view')
 
 def STAFF_FEEDBACK(request):
     feedback = Staff_Feedback.objects.all()
